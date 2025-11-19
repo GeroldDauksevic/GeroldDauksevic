@@ -1,15 +1,913 @@
-    
-<!-- Name Surname, Group XX -->
 <!DOCTYPE html>
+<!-- Created by Name Surname, Group XX -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My First Lab</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Name Surname">
+  <meta name="description" content="Personal resume and portfolio website">
+  <title>Name Surname – Resume & Portfolio</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+
+  <!-- Кастомные стили для задания -->
+  <style>
+    /* =========
+       Дизайн-система (типографика, отступы, цвета)
+       ========= */
+    :root {
+      /* Базовая типографика */
+      --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-heading: "Segoe UI Semibold", system-ui, sans-serif;
+
+      /* Размеры шрифтов */
+      --fs-h1: 2.5rem;
+      --fs-h2: 2rem;
+      --fs-h3: 1.35rem;
+      --fs-body: 1rem;
+
+      /* Линейные интервалы */
+      --lh-heading: 1.15;
+      --lh-body: 1.7;
+
+      /* Letter-spacing */
+      --ls-h1: 0.08em;
+      --ls-h2: 0.06em;
+      --ls-h3: 0.04em;
+
+      /* Цвета */
+      --color-bg: #f5f6fa;
+      --color-surface: #ffffff;
+      --color-border-subtle: rgba(15, 23, 42, 0.08);
+      --color-primary: #2563eb;
+      --color-primary-dark: #1d4ed8;
+      --color-primary-soft: rgba(37, 99, 235, 0.08);
+      --color-text-main: #0f172a;
+      --color-text-muted: #64748b;
+      --color-accent: #f97316;
+
+      /* Шкала отступов */
+      --space-1: 0.5rem;
+      --space-2: 1rem;
+      --space-3: 1.5rem;
+      --space-4: 2rem;
+      --space-5: 3rem;
+
+      /* Скругления и тени */
+      --radius-lg: 1.25rem;
+      --radius-pill: 999px;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --shadow-strong: 0 18px 50px rgba(15, 23, 42, 0.16);
+    }
+
+    body {
+      font-family: var(--font-base);
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
+      color: var(--color-text-main);
+      background-color: var(--color-bg);
+      padding-top: 70px;
+    }
+
+    /* Типографика: h1–h3 и параграфы */
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+      line-height: var(--lh-heading);
+      text-transform: uppercase;
+      letter-spacing: var(--ls-h2);
+      color: #0f172a;
+    }
+
+    h1 {
+      font-size: var(--fs-h1);
+      letter-spacing: var(--ls-h1);
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: var(--fs-h2);
+      font-weight: 650;
+    }
+
+    h3 {
+      font-size: var(--fs-h3);
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: var(--space-2);
+      color: var(--color-text-muted);
+      line-height: var(--lh-body);
+    }
+
+    small {
+      color: var(--color-text-muted);
+    }
+
+    section {
+      padding: var(--space-4) 0;
+    }
+
+    .section-title {
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    .section-title h2 {
+      margin-bottom: var(--space-1);
+    }
+
+    .section-title p {
+      margin: 0 auto;
+      max-width: 540px;
+    }
+
+    /* =========
+       “Поверхности” / карточки
+       ========= */
+    .surface-card {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: var(--space-3);
+    }
+
+    .surface-card + .surface-card {
+      margin-top: var(--space-3);
+    }
+
+    /* Используем согласованную шкалу отступов для нескольких секций */
+    #about .surface-card,
+    #resume .surface-card,
+    #portfolio .surface-card,
+    #services .surface-card,
+    #skills .surface-card,
+    #study-table .surface-card {
+      margin-top: var(--space-2);
+      padding: var(--space-3);
+    }
+
+    /* =========
+       Перестайлинг навбара (компонент 1)
+       ========= */
+    .navbar {
+      background: linear-gradient(90deg, #0f172a, #1e293b);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      color: #e5e7eb !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #cbd5f5 !important;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-inline: 0.9rem;
+      position: relative;
+    }
+
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0.8rem;
+      right: 0.8rem;
+      bottom: 0.3rem;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease-out;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link:focus::after,
+    .navbar-nav .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffffff !important;
+    }
+
+    /* =========
+       Hero-блок
+       ========= */
+    header#top {
+      padding: var(--space-4) 0 var(--space-4);
+      background: radial-gradient(circle at top left, #dbeafe, #f5f6fa 55%);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    header#top .surface-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+    }
+
+    /* =========
+       Интерактивные элементы: ссылки и кнопки
+       ========= */
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+      text-decoration-color: transparent;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--color-primary-dark);
+      text-decoration: underline;
+      text-decoration-color: var(--color-primary-dark);
+    }
+
+    a:active {
+      color: var(--color-accent);
+    }
+
+    .btn,
+    button {
+      font-family: var(--font-base);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      border: none;
+      border-radius: var(--radius-pill);
+      padding-inline: 1.5rem;
+      padding-block: 0.6rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.22);
+    }
+
+    /* Дополнительный “link-button” стиль для inline ссылок */
+    .btn-link-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-primary-soft);
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      background-color: rgba(255, 255, 255, 0.9);
+      transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.1s ease;
+    }
+
+    .btn-link-outline:hover {
+      background-color: var(--color-primary-soft);
+      border-color: var(--color-primary);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-link-outline:active {
+      transform: translateY(1px);
+    }
+
+    /* =========
+       Портфолио карточки
+       ========= */
+    .portfolio-item img {
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .portfolio-item h4 {
+      margin-bottom: 0.2rem;
+    }
+
+    .portfolio-item p {
+      font-size: 0.95rem;
+    }
+
+    /* =========
+       Кнопка "Back to top" (компонент 2)
+       ========= */
+    .back-to-top {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 1.5rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      border: none;
+      background: radial-gradient(circle at 30% 30%, #eff6ff, #1d4ed8);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: var(--shadow-strong);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 40;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .back-to-top:active {
+      transform: translateY(2px) scale(0.96);
+    }
+
+    /* =========
+       Списки с псевдоэлементами / счётчиками (доп. задание)
+       ========= */
+    .list-check {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .list-check li {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .list-check li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      font-size: 0.9rem;
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 50%;
+      background-color: var(--color-primary-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary-dark);
+    }
+
+    .list-check ul {
+      margin-top: 0.3rem;
+      padding-left: 1.2rem;
+      list-style: square;
+    }
+
+    /* Нумерованный список с CSS-счётчиком */
+    .list-counter {
+      list-style: none;
+      counter-reset: skillCounter;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .list-counter li {
+      counter-increment: skillCounter;
+      padding-left: 2.3rem;
+      margin-bottom: 0.45rem;
+      position: relative;
+    }
+
+    .list-counter li::before {
+      content: counter(skillCounter);
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 0.6rem;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* =========
+       Таблица / блок данных (доп. задание)
+       ========= */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .data-table thead {
+      background: linear-gradient(90deg, #0f172a, #1e293b);
+      color: #e5e7eb;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .data-table th {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+
+    .data-table tbody tr:hover {
+      background-color: #e5edff;
+    }
+
+    .data-table td.text-right {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .data-table td.text-left {
+      text-align: left;
+    }
+
+    /* =========
+       Footer
+       ========= */
+    footer {
+      padding: var(--space-2) 0;
+      background: #0f172a;
+      color: #e5e7eb;
+      text-align: center;
+      margin-top: var(--space-4);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #bfdbfe;
+    }
+
+    footer a:hover {
+      color: #ffffff;
+    }
+
+    /* Немного адаптива */
+    @media (max-width: 767.98px) {
+      header#top {
+        padding-top: var(--space-3);
+      }
+
+      .navbar-nav .nav-link {
+        padding-block: 0.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <p>This is normal text.</p>
-    <p><b>This is bold text</b></p>
-    <p><i>This is italic text</i></p>
-    <p><u>This is underlined text</u></p>
+
+  <!-- Навигация -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom">
+    <div class="container">
+      <a class="navbar-brand" href="#top">Name Surname</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#study-table">Study</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero-блок -->
+  <header id="top">
+    <div class="container">
+      <div class="surface-card">
+        <div class="row align-items-center g-4">
+          <div class="col-md-4 text-center">
+            <!-- Твоя фотография -->
+            <img
+              src="assets/img/profile.jpg"
+              alt="Portrait of Name Surname"
+              class="img-fluid rounded-circle"
+              width="220"
+              height="220"
+            >
+          </div>
+          <div class="col-md-8">
+            <h1 class="mb-2">Name Surname</h1>
+            <h2 class="h5 text-muted mb-3">Student &amp; Future Web Developer</h2>
+            <p class="mb-3">
+              This is my personal resume and portfolio website created as a lab assignment.
+              Here you can find information about me, my education, experience, skills and
+              some of the projects I have worked on.
+            </p>
+            <a href="#portfolio" class="btn btn-primary me-2">View Portfolio</a>
+            <a href="#resume" class="btn-link-outline">View Resume →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>A short introduction to who I am, what I study and what I am interested in.</p>
+      </div>
+      <div class="surface-card">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <p>
+              I am a student of information technologies with a growing interest in web development
+              and modern programming tools. During my studies I work with HTML, CSS, JavaScript and
+              scripting languages, and I enjoy creating small projects that help me understand new
+              concepts in practice. I like to experiment with layouts, interactive elements and
+              responsive design to make websites look clean and user-friendly on different devices.
+            </p>
+            <p>
+              Outside of my university work, I follow online tutorials and courses, and I regularly
+              read documentation to improve my skills. I am especially interested in front-end
+              development and I would like to continue learning frameworks and technologies that are
+              used in real projects. In the future I hope to join a professional team where I can
+              contribute to useful applications, learn from experienced developers and grow both
+              technically and personally.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="container">
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>My formal education, experience and projects that helped me to build my current skills.</p>
+      </div>
+
+      <div class="surface-card">
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="mb-3">Education</h3>
+
+            <div class="mb-4">
+              <h4 class="h5 mb-1">Information Technology Student</h4>
+              <h5 class="text-muted small mb-1">2023 – Present</h5>
+              <p class="mb-1"><em>Example University, City</em></p>
+              <p class="mb-0">
+                Studying programming, web technologies and computer systems. Main subjects include
+                algorithms, databases, web development and scripting.
+              </p>
+            </div>
+
+            <div class="mb-2">
+              <h4 class="h5 mb-1">Secondary School</h4>
+              <h5 class="text-muted small mb-1">2017 – 2023</h5>
+              <p class="mb-1"><em>Example Gymnasium, City</em></p>
+              <p class="mb-0">
+                Finished secondary education with a focus on mathematics and computer science. Took
+                part in school projects and IT-related events.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h3 class="mb-3">Experience & Projects</h3>
+
+            <div class="mb-4">
+              <h4 class="h5 mb-1">Personal Web Projects</h4>
+              <h5 class="text-muted small mb-1">2023 – Present</h5>
+              <p class="mb-1"><em>Self-initiated</em></p>
+              <p class="mb-0">
+                Created several small websites and landing pages to practice HTML, CSS and basic
+                JavaScript. Learned how to structure code, use version control and publish pages
+                online with GitHub Pages.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h4 class="h5 mb-1">Course Assignments</h4>
+              <h5 class="text-muted small mb-1">2023 – Present</h5>
+              <p class="mb-1"><em>University projects</em></p>
+              <p class="mb-0">
+                Completed assignments related to scripting, basic algorithms and data structures.
+                Worked individually and in small groups, improving communication and planning skills.
+              </p>
+            </div>
+
+            <div class="mb-1">
+              <h4 class="h5 mb-1">Volunteer or Club Activity</h4>
+              <h5 class="text-muted small mb-1">Year – Year</h5>
+              <p class="mb-1"><em>Example IT Club, City</em></p>
+              <p class="mb-0">
+                Participated in an IT or programming club, helped to organize simple events or
+                workshops, and supported other students in learning basic computer skills.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <p>Some of the small projects that I have created to practice web development skills.</p>
+      </div>
+
+      <div class="surface-card">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="portfolio-item">
+              <img
+                src="assets/img/portfolio-1.jpg"
+                alt="Screenshot of Portfolio Project 1"
+                class="img-fluid"
+                width="400"
+                height="250"
+              >
+              <h4 class="h5 mt-2">Portfolio Project 1</h4>
+              <p class="mb-0">
+                A simple responsive landing page created using HTML, CSS and Bootstrap. The project
+                focuses on clean layout and mobile-friendly design.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="portfolio-item">
+              <img
+                src="assets/img/portfolio-2.jpg"
+                alt="Screenshot of Portfolio Project 2"
+                class="img-fluid"
+                width="400"
+                height="250"
+              >
+              <h4 class="h5 mt-2">Portfolio Project 2</h4>
+              <p class="mb-0">
+                A small website for a fictional service or product. It includes navigation, sections,
+                and basic interactive elements such as buttons and links.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="portfolio-item">
+              <img
+                src="assets/img/portfolio-3.jpg"
+                alt="Screenshot of Portfolio Project 3"
+                class="img-fluid"
+                width="400"
+                height="250"
+              >
+              <h4 class="h5 mt-2">Portfolio Project 3</h4>
+              <p class="mb-0">
+                A prototype of a personal blog page with a simple article layout and a focus on
+                readability and basic typography.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS (списки с псевдоэлементами / counters) -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-title">
+        <h2>Skills & Tools</h2>
+        <p>Key areas I am learning right now and the tools I use most frequently.</p>
+      </div>
+
+      <div class="surface-card">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <h3 class="mb-2">Technical Focus</h3>
+            <ul class="list-check">
+              <li>Web development with HTML, CSS and basic JavaScript
+                <ul>
+                  <li>Building responsive layouts</li>
+                  <li>Styling with modern CSS features</li>
+                </ul>
+              </li>
+              <li>Version control using Git and GitHub</li>
+              <li>Scripting and automation for simple tasks</li>
+              <li>Understanding of basic algorithms and data structures</li>
+            </ul>
+          </div>
+
+          <div class="col-md-6">
+            <h3 class="mb-2">Learning Roadmap</h3>
+            <ol class="list-counter">
+              <li>Strengthen fundamentals in HTML, CSS and responsive design.</li>
+              <li>Practice JavaScript and create more interactive projects.</li>
+              <li>Learn a modern front-end framework (for example, React or Vue).</li>
+              <li>Explore back-end basics and simple APIs.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY TABLE (таблица / data block) -->
+  <section id="study-table">
+    <div class="container">
+      <div class="section-title">
+        <h2>Study Overview</h2>
+        <p>Summary of several subjects and approximate time I plan to spend on each of them.</p>
+      </div>
+
+      <div class="surface-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="text-left">Subject</th>
+                <th class="text-left">Focus Area</th>
+                <th class="text-right">Hours / Week</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left">Web Development</td>
+                <td class="text-left">HTML, CSS, layouts, components</td>
+                <td class="text-right">6</td>
+              </tr>
+              <tr>
+                <td class="text-left">Programming</td>
+                <td class="text-left">Algorithms, scripting, logic</td>
+                <td class="text-right">5</td>
+              </tr>
+              <tr>
+                <td class="text-left">Databases</td>
+                <td class="text-left">SQL basics, data modeling</td>
+                <td class="text-right">3</td>
+              </tr>
+              <tr>
+                <td class="text-left">Self-Study</td>
+                <td class="text-left">Online courses, documentation</td>
+                <td class="text-right">4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 mb-0">
+          This plan is flexible and may change depending on the semester workload, but it helps me
+          to keep a consistent pace in learning.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (медиа: видео, YouTube, аудио) -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Services & Media</h2>
+        <p>Examples of how I could present my work and explain what I can help with.</p>
+      </div>
+
+      <div class="surface-card">
+        <div class="row g-5">
+          <!-- Local video -->
+          <div class="col-md-4">
+            <h3 class="h5 mb-3">Local Video</h3>
+            <p>
+              This local video file is stored in the <code>/assets/media/</code> folder and embedded
+              using the HTML <code>&lt;video&gt;</code> tag.
+            </p>
+            <video controls width="100%">
+              <source src="assets/media/demo-video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- YouTube iframe -->
+          <div class="col-md-4">
+            <h3 class="h5 mb-3">YouTube Video</h3>
+            <p>
+              This YouTube video is embedded using an <code>&lt;iframe&gt;</code> with the official
+              embed URL.
+            </p>
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/VIDEO_ID"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Local audio -->
+          <div class="col-md-4">
+            <h3 class="h5 mb-3">Audio Sample</h3>
+            <p>
+              This audio recording is stored in the <code>/assets/media/</code> folder and played
+              with the HTML <code>&lt;audio&gt;</code> element.
+            </p>
+            <audio controls style="width: 100%;">
+              <source src="assets/media/sample-audio.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <small>
+        &copy; 2025 Name Surname. All rights reserved.
+        &nbsp;|&nbsp;
+        Built as a lab assignment. View source on
+        <a href="https://github.com/your_username/your_username.github.io" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>.
+      </small>
+    </div>
+  </footer>
+
+  <!-- Кнопка "Back to top" -->
+  <button class="back-to-top" type="button" aria-label="Back to top">
+    ↑
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- JS для back-to-top -->
+  <script>
+    const backToTopBtn = document.querySelector('.back-to-top');
+
+    function toggleBackToTop() {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    }
+
+    window.addEventListener('scroll', toggleBackToTop);
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
