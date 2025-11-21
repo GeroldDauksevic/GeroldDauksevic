@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Created by Name Surname, Group XX -->
+<!-- Gerold Dauksevic -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,23 +16,23 @@
     crossorigin="anonymous"
   >
 
-  <!-- Кастомные стили для задания -->
+  <!-- Custom styles for task -->
   <style>
-    /* =========
-       Дизайн-система (типографика, отступы, цвета)
-       ========= */
+    /*
+      System design
+        */
     :root {
-      /* Базовая типографика */
+      
       --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-heading: "Segoe UI Semibold", system-ui, sans-serif;
 
-      /* Размеры шрифтов */
+      
       --fs-h1: 2.5rem;
       --fs-h2: 2rem;
       --fs-h3: 1.35rem;
       --fs-body: 1rem;
 
-      /* Линейные интервалы */
+      
       --lh-heading: 1.15;
       --lh-body: 1.7;
 
@@ -41,7 +41,7 @@
       --ls-h2: 0.06em;
       --ls-h3: 0.04em;
 
-      /* Цвета */
+      /* colors */
       --color-bg: #f5f6fa;
       --color-surface: #ffffff;
       --color-border-subtle: rgba(15, 23, 42, 0.08);
@@ -52,14 +52,14 @@
       --color-text-muted: #64748b;
       --color-accent: #f97316;
 
-      /* Шкала отступов */
+      /* Indentation scale */
       --space-1: 0.5rem;
       --space-2: 1rem;
       --space-3: 1.5rem;
       --space-4: 2rem;
       --space-5: 3rem;
 
-      /* Скругления и тени */
+      /* Rounded corners and shadows */
       --radius-lg: 1.25rem;
       --radius-pill: 999px;
       --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
@@ -75,7 +75,7 @@
       padding-top: 70px;
     }
 
-    /* Типографика: h1–h3 и параграфы */
+    /* Typography: h1–h3 and paragraphs */
     h1, h2, h3 {
       font-family: var(--font-heading);
       line-height: var(--lh-heading);
@@ -128,9 +128,9 @@
       max-width: 540px;
     }
 
-    /* =========
-       “Поверхности” / карточки
-       ========= */
+    /* 
+       Surfaces / Cards
+       */
     .surface-card {
       background-color: var(--color-surface);
       border-radius: var(--radius-lg);
@@ -143,7 +143,7 @@
       margin-top: var(--space-3);
     }
 
-    /* Используем согласованную шкалу отступов для нескольких секций */
+    /*We use a consistent indentation scale for multiple sections */
     #about .surface-card,
     #resume .surface-card,
     #portfolio .surface-card,
@@ -154,9 +154,9 @@
       padding: var(--space-3);
     }
 
-    /* =========
-       Перестайлинг навбара (компонент 1)
-       ========= */
+    /* 
+       Navbar restyling (component 1)
+       */
     .navbar {
       background: linear-gradient(90deg, #0f172a, #1e293b);
       box-shadow: var(--shadow-soft);
@@ -203,9 +203,9 @@
       color: #ffffff !important;
     }
 
-    /* =========
-       Hero-блок
-       ========= */
+    /* 
+       Hero section
+       */
     header#top {
       padding: var(--space-4) 0 var(--space-4);
       background: radial-gradient(circle at top left, #dbeafe, #f5f6fa 55%);
@@ -217,9 +217,9 @@
       backdrop-filter: blur(8px);
     }
 
-    /* =========
-       Интерактивные элементы: ссылки и кнопки
-       ========= */
+    /* 
+      Interactive elements: links and buttons2
+        */
     a {
       color: var(--color-primary);
       text-decoration: none;
@@ -268,7 +268,7 @@
       box-shadow: 0 4px 10px rgba(15, 23, 42, 0.22);
     }
 
-    /* Дополнительный “link-button” стиль для inline ссылок */
+    /* Additional 'link-button' style for inline links */
     .btn-link-outline {
       display: inline-flex;
       align-items: center;
@@ -295,9 +295,9 @@
       transform: translateY(1px);
     }
 
-    /* =========
-       Портфолио карточки
-       ========= */
+    /* 
+       portfolio cards
+        */
     .portfolio-item img {
       object-fit: cover;
       border-radius: 0.75rem;
@@ -312,9 +312,9 @@
       font-size: 0.95rem;
     }
 
-    /* =========
-       Кнопка "Back to top" (компонент 2)
-       ========= */
+    /*
+       Button "Back to top" (component 2)
+       */
     .back-to-top {
       position: fixed;
       right: 1.5rem;
@@ -348,9 +348,9 @@
       transform: translateY(2px) scale(0.96);
     }
 
-    /* =========
-       Списки с псевдоэлементами / счётчиками (доп. задание)
-       ========= */
+    /* 
+       Lists with pseudo-elements / counters (additional assignment)
+       */
     .list-check {
       list-style: none;
       padding-left: 0;
@@ -385,7 +385,7 @@
       list-style: square;
     }
 
-    /* Нумерованный список с CSS-счётчиком */
+    /* Numbered list with CSS counter */
     .list-counter {
       list-style: none;
       counter-reset: skillCounter;
@@ -417,9 +417,9 @@
       justify-content: center;
     }
 
-    /* =========
-       Таблица / блок данных (доп. задание)
-       ========= */
+    /* 
+       Table / data block (additional task)
+        */
     .data-table {
       width: 100%;
       border-collapse: collapse;
@@ -463,9 +463,9 @@
       text-align: left;
     }
 
-    /* =========
+    /* 
        Footer
-       ========= */
+        */
     footer {
       padding: var(--space-2) 0;
       background: #0f172a;
@@ -483,7 +483,7 @@
       color: #ffffff;
     }
 
-    /* Немного адаптива */
+    /* adapting */
     @media (max-width: 767.98px) {
       header#top {
         padding-top: var(--space-3);
@@ -497,7 +497,7 @@
 </head>
 <body>
 
-  <!-- Навигация -->
+  <!-- navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom">
     <div class="container">
       <a class="navbar-brand" href="#top">Name Surname</a>
@@ -518,24 +518,24 @@
     </div>
   </nav>
 
-  <!-- Hero-блок -->
+  <!-- Hero-section -->
   <header id="top">
     <div class="container">
       <div class="surface-card">
         <div class="row align-items-center g-4">
           <div class="col-md-4 text-center">
-            <!-- Твоя фотография -->
-            <img
-              src="assets/img/profile.jpg"
-              alt="Portrait of Name Surname"
-              class="img-fluid rounded-circle"
-              width="220"
-              height="220"
-            >
+            <!-- My photo -->
+            <img src= "assets/img/profile/Gerold.jpg"
+  alt="My Photo"
+  class="img-fluid rounded-circle"
+  width="220"
+  height="220"
+/>
+
           </div>
           <div class="col-md-8">
-            <h1 class="mb-2">Name Surname</h1>
-            <h2 class="h5 text-muted mb-3">Student &amp; Future Web Developer</h2>
+            <h1 class="mb-2">Gerold Dauksevic</h1>
+            <h2 class="h5 text-muted mb-3">Student &amp; Artificial Intelligence engineer</h2>
             <p class="mb-3">
               This is my personal resume and portfolio website created as a lab assignment.
               Here you can find information about me, my education, experience, skills and
@@ -560,19 +560,14 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <p>
-              I am a student of information technologies with a growing interest in web development
-              and modern programming tools. During my studies I work with HTML, CSS, JavaScript and
-              scripting languages, and I enjoy creating small projects that help me understand new
-              concepts in practice. I like to experiment with layouts, interactive elements and
-              responsive design to make websites look clean and user-friendly on different devices.
+              Hello, i am Gerold Dauksevic, student of Vilnius Tech, 2 year student. I soo interested in developing new products and projects with AI. 
+During my studies I work a lot with different programs and programming languages like C++, Python, Matlab, HTML and CSS, MY SQL,
+also during the python course for my course work I create the crypto currency exchange simuliator,
+but also during my studies I create some small projects, and that help me to understand new concepts in this field.
             </p>
             <p>
-              Outside of my university work, I follow online tutorials and courses, and I regularly
-              read documentation to improve my skills. I am especially interested in front-end
-              development and I would like to continue learning frameworks and technologies that are
-              used in real projects. In the future I hope to join a professional team where I can
-              contribute to useful applications, learn from experienced developers and grow both
-              technically and personally.
+           Outside the university I work on my own projects like "LookMate" that is the app which help people create the outfit for every day.
+But also, I learning new topic and things every day and trying to improve my knowledge ecvery day.
             </p>
           </div>
         </div>
@@ -594,22 +589,23 @@
             <h3 class="mb-3">Education</h3>
 
             <div class="mb-4">
-              <h4 class="h5 mb-1">Information Technology Student</h4>
-              <h5 class="text-muted small mb-1">2023 – Present</h5>
-              <p class="mb-1"><em>Example University, City</em></p>
+              <h4 class="h5 mb-1">Student of "Artificial Intelligence Systems"</h4>
+              <h5 class="text-muted small mb-1">2024 – Present</h5>
+              <p class="mb-1"><em>Vilnius Tech, Vilnius</em></p>
               <p class="mb-0">
-                Studying programming, web technologies and computer systems. Main subjects include
-                algorithms, databases, web development and scripting.
+                Studying programming, Artificiall Intelligence Systems, Data Analysis, Machine Learning, LLM, Data Bases and Electrical Enginering.
+                Participating in group projects and practical assignments to apply theoretical knowledge.
               </p>
             </div>
 
             <div class="mb-2">
               <h4 class="h5 mb-1">Secondary School</h4>
-              <h5 class="text-muted small mb-1">2017 – 2023</h5>
-              <p class="mb-1"><em>Example Gymnasium, City</em></p>
+              <h5 class="text-muted small mb-1">2012 – 2024</h5>
+              <p class="mb-1"><em>Mykolo Balinskio Gimasium, Jasiunai</em></p>
               <p class="mb-0">
-                Finished secondary education with a focus on mathematics and computer science. Took
-                part in school projects and IT-related events.
+                I finished my school in 2024 with all passed exams and good grades.
+                I was active in school life, participated in various events and competitions.
+                Also I was member of school board, so I helped to organize different events for students, and helped to solve different problems.
               </p>
             </div>
           </div>
@@ -618,33 +614,33 @@
             <h3 class="mb-3">Experience & Projects</h3>
 
             <div class="mb-4">
-              <h4 class="h5 mb-1">Personal Web Projects</h4>
-              <h5 class="text-muted small mb-1">2023 – Present</h5>
+              <h4 class="h5 mb-1">Personal  Projects</h4>
+              <h5 class="text-muted small mb-1">2025 – Present</h5>
               <p class="mb-1"><em>Self-initiated</em></p>
               <p class="mb-0">
-                Created several small websites and landing pages to practice HTML, CSS and basic
-                JavaScript. Learned how to structure code, use version control and publish pages
-                online with GitHub Pages.
+                Now currently I developing the app for IOS and Android systems "LookMate", that help people to create the outfit for every day.
+                I am working alone on this project, learning new skills and tools as needed.
               </p>
             </div>
 
             <div class="mb-4">
               <h4 class="h5 mb-1">Course Assignments</h4>
-              <h5 class="text-muted small mb-1">2023 – Present</h5>
+              <h5 class="text-muted small mb-1">2024 – Present</h5>
               <p class="mb-1"><em>University projects</em></p>
               <p class="mb-0">
-                Completed assignments related to scripting, basic algorithms and data structures.
-                Worked individually and in small groups, improving communication and planning skills.
+                I complete various assignments and projects as part of my university coursework.
+                These projects help me to apply theoretical knowledge in practical scenarios. One of this projects was the Crypto Currency exchange simulator created using Python Object Oriented Pogramming principles.
+                Also during 3 semester i create the Data Base for the Bank system using My SQL.
               </p>
             </div>
 
             <div class="mb-1">
               <h4 class="h5 mb-1">Volunteer or Club Activity</h4>
-              <h5 class="text-muted small mb-1">Year – Year</h5>
-              <p class="mb-1"><em>Example IT Club, City</em></p>
+              <h5 class="text-muted small mb-1">2023 – 2024</h5>
+              <p class="mb-1"><em>Mykolo Balinskio School, Jasiunai</em></p>
               <p class="mb-0">
-                Participated in an IT or programming club, helped to organize simple events or
-                workshops, and supported other students in learning basic computer skills.
+              I participate in school events and activities, helping to organize and manage various functions.
+              This experience helped me to develop teamwork, communication and organizational skills.
               </p>
             </div>
           </div>
@@ -653,72 +649,9 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-title">
-        <h2>Portfolio</h2>
-        <p>Some of the small projects that I have created to practice web development skills.</p>
-      </div>
 
-      <div class="surface-card">
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img
-                src="assets/img/portfolio-1.jpg"
-                alt="Screenshot of Portfolio Project 1"
-                class="img-fluid"
-                width="400"
-                height="250"
-              >
-              <h4 class="h5 mt-2">Portfolio Project 1</h4>
-              <p class="mb-0">
-                A simple responsive landing page created using HTML, CSS and Bootstrap. The project
-                focuses on clean layout and mobile-friendly design.
-              </p>
-            </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img
-                src="assets/img/portfolio-2.jpg"
-                alt="Screenshot of Portfolio Project 2"
-                class="img-fluid"
-                width="400"
-                height="250"
-              >
-              <h4 class="h5 mt-2">Portfolio Project 2</h4>
-              <p class="mb-0">
-                A small website for a fictional service or product. It includes navigation, sections,
-                and basic interactive elements such as buttons and links.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="portfolio-item">
-              <img
-                src="assets/img/portfolio-3.jpg"
-                alt="Screenshot of Portfolio Project 3"
-                class="img-fluid"
-                width="400"
-                height="250"
-              >
-              <h4 class="h5 mt-2">Portfolio Project 3</h4>
-              <p class="mb-0">
-                A prototype of a personal blog page with a simple article layout and a focus on
-                readability and basic typography.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS (списки с псевдоэлементами / counters) -->
+  <!-- SKILLS  -->
   <section id="skills">
     <div class="container">
       <div class="section-title">
@@ -731,7 +664,7 @@
           <div class="col-md-6">
             <h3 class="mb-2">Technical Focus</h3>
             <ul class="list-check">
-              <li>Web development with HTML, CSS and basic JavaScript
+              <li>Web development with HTML, CSS and basic JavaScript, Scripts writing with Matlab and Python.
                 <ul>
                   <li>Building responsive layouts</li>
                   <li>Styling with modern CSS features</li>
@@ -740,6 +673,8 @@
               <li>Version control using Git and GitHub</li>
               <li>Scripting and automation for simple tasks</li>
               <li>Understanding of basic algorithms and data structures</li>
+              <li>Database fundamentals with SQL</li>
+              <li>AI implementation in personal projects</li>
             </ul>
           </div>
 
@@ -750,6 +685,9 @@
               <li>Practice JavaScript and create more interactive projects.</li>
               <li>Learn a modern front-end framework (for example, React or Vue).</li>
               <li>Explore back-end basics and simple APIs.</li>
+              <li>Deepen understanding of databases and SQL.</li>
+              <li>Work on personal projects to apply new skills.</li>
+              <li>Learn more about AI and it implementation</li>
             </ol>
           </div>
         </div>
@@ -757,7 +695,7 @@
     </div>
   </section>
 
-  <!-- STUDY TABLE (таблица / data block) -->
+  <!-- STUDY TABLE -->
   <section id="study-table">
     <div class="container">
       <div class="section-title">
@@ -807,7 +745,7 @@
     </div>
   </section>
 
-  <!-- SERVICES (медиа: видео, YouTube, аудио) -->
+  <!-- SERVICES, media youtube videos -->
   <section id="services">
     <div class="container">
       <div class="section-title">
@@ -879,7 +817,7 @@
     </div>
   </footer>
 
-  <!-- Кнопка "Back to top" -->
+  <!-- button "Back to top" -->
   <button class="back-to-top" type="button" aria-label="Back to top">
     ↑
   </button>
@@ -891,7 +829,7 @@
     crossorigin="anonymous"
   ></script>
 
-  <!-- JS для back-to-top -->
+  <!-- JS for back-to-top -->
   <script>
     const backToTopBtn = document.querySelector('.back-to-top');
 
